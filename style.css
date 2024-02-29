@@ -103,7 +103,7 @@ body {
     color: var(--blue);
     font-family: 'Sacramento';
     font-size: 5rem;
-    font-weight: bold;
+    font-weight: 300;
 }
 
 .home .couple {
