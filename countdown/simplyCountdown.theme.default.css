@@ -29,3 +29,33 @@
     font-size: 2rem;
 
 }
+
+/* Mobile */
+@media (max-width: 576px) {
+    html {
+        font-size: 55%;
+    }
+
+
+    .simply-countdown>.simply-section {
+    padding: 40px;
+    margin: 3px;
+    }
+
+    .timeline li .timeline-image {
+        width: 100px;
+        height: 100px;
+    }
+
+    .timeline li .timeline-panel {
+        width: 55%;
+        transform: translateX(-60px);
+    }
+
+    .timeline li .timeline-panel::before {
+        top: 40px;
+    }
+    .timeline li .timeline-panel::after {
+        top: 41px;
+    }
+}
