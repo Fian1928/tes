@@ -311,8 +311,50 @@
 
       <!-- gift -->
       <section id="gifts" class="gifts">
-        
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-md-8 col-md-10 text-center">
+              <span>Ucapan Tanda Kasih</span>
+              <h2>Kirim Hadiah</h2>
+              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, eligendi.</p>
+            </div>
+          </div>
+
+          <div class="row justify-content-center text-center">
+            <div class="col-md-6">
+              <ul class="list-group">
+                <li class="list-group-item">
+                 <div class="d-block fw-bold">BCA</div> 
+                  12345678910 - NIKOLAS BAGUS SAPUTRA
+                </li>
+                <li class="list-group-item">
+                 <div class="d-block fw-bold">DANA</div> 
+                  12345678910 - NIKOLAS BAGUS SAPUTRA
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </section>
+
+      <!-- footer -->
+      <footer>
+        <div class="row">
+          <div class="col text-center">
+            <small class="block">&copy; 2024 NiDa Wedding. All Rights Reserved</small>
+          </div>
+        </div>
+      </footer>
+      
+      <div id=""audio-container>
+        <audio id="song" autoplay loop>
+          <source src="musik/akad.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="audio-icon-wrapper" style="display: none;">
+          <i class="bi bi-disc"></i>
+        </div>
+      </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
@@ -351,28 +393,59 @@
 
     <!-- disable scroll -->
     <script>
-      function disableScroll() {
-    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+     const rootElement = document.documentElement;
+     const audioIconWrapper = document.querySelector('.audio-icon-wrapper');
+     const song = document.querySelector('#song');
+     const audioIcon = document.querySelector('.audio-icon-wrapper i');
+     let isPlaying = false;
 
-    window.onscroll = function() {
-        window.scrollTo(scrollLeft, scrollTop);
-    }
+function disableScroll() {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-    document.documentElement.style.scrollBehavior = 'auto'; // Memperbaiki pengaturan properti scrollBehavior
+  window.onscroll = function () {
+    window.scrollTo(scrollLeft, scrollTop);
+  }
+  rootElement.style.scrollBehavior = 'auto';
 }
 
 function enableScroll() {
-  window.onscroll = function (){}
-  document.documentElement.style.scrollBehavior = 'smooth';
-  localStorage.setItem('opened', 'true');
+  window.onscroll = null;
+  rootElement.style.scrollBehavior = 'smooth';
+  playAudio();
 }
 
-if (!localStorage.getItem('opened')) {
-  disableScroll();
+function playAudio() {
+  
+  song.volume = 0.1;
+  audioIconWrapper.style.display = 'flex';
+  song.play();
+  isPlaying = true;
 }
-</script>
 
+
+audioIconWrapper.onclick = function () {
+  if (isPlaying) {
+    song.pause();
+    audioIcon.classList.remove('bi-disc');
+    audioIcon.classList.add('bi-pause-circle');
+  }else {
+    song.play();
+    audioIcon.classList.remove('bi-pause-circle');
+    audioIcon.classList.add('bi-disc');
+  }
+
+  isPlaying = !isPlaying;
+
+  
+}
+
+// Panggil fungsi disableScroll() untuk menonaktifkan pengguliran saat halaman dimuat
+disableScroll();
+    </script>
+    
+
+    <!-- post -->
 <script>
   window.addEventListener("load", function() {
     const form = document.getElementById('my-form');
@@ -400,5 +473,6 @@ function saveFormData() {
   });
 }
   </script>
+
   </body>
 </html>
